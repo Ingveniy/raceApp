@@ -1,9 +1,9 @@
 import React, { PureComponent } from "react";
 import { Text, View, StyleSheet } from "react-native";
-
+import PropTypes from "prop-types";
 import { map } from "lodash";
 
-const TableHeader = ({ tableHeaders = [] }) => {
+const TableHeader = ({ tableHeaders }) => {
   return (
     <View style={styles.headerContainer}>
       {map(tableHeaders, (headerItem, index) => {
@@ -32,5 +32,9 @@ const styles = StyleSheet.create({
     fontSize: 17
   }
 });
+
+TableHeader.propTypes = {
+  tableHeaders: PropTypes.array.isRequired,
+};
 
 export default TableHeader;

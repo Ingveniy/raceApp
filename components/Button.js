@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
 
 const Button = ({
   title,
@@ -47,4 +48,16 @@ const styles = StyleSheet.create({
   }
 });
 
+Button.propTypes = {
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
+  onPress: PropTypes.func.isRequired,
+  style: PropTypes.object,
+  color: PropTypes.string,
+  fontSize: PropTypes.number,
+  fontWeight: PropTypes.string,
+  fontStyle: PropTypes.string,
+  fontFamily: PropTypes.string,
+  disabled: PropTypes.bool
+};
 export default Button;

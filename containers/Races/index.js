@@ -3,6 +3,7 @@ import axios from "axios";
 import { Text, View, TouchableOpacity } from "react-native";
 
 import Table from "../../components/DataTable/Table";
+import PropTypes from 'prop-types';
 
 const TABLE_HEADERS = [
   {
@@ -39,12 +40,10 @@ class Races extends Component {
   }
   static navigationOptions = {};
   componentDidMount() {
-    console.log(this.props, "props");
     this.getRacesByLimit();
   }
 
   handleChangePage = newPageNumber => {
-    console.log("newPageNumber", newPageNumber);
     let newOffset = this.prepareOffsetByPageNumberAndLimit(
       newPageNumber,
       this.state.limit
@@ -70,7 +69,7 @@ class Races extends Component {
             response.data.MRData.RaceTable.Races
           ),
           rawRaceList: response.data.MRData.RaceTable.Races,
-          racesTotalCount: response.data.MRData.total,
+          racesTotalCount: +response.data.MRData.total,
           dataWasLoaded: true,
           errorMessage: null,
           limit,
@@ -82,14 +81,13 @@ class Races extends Component {
         console.log(err, "race load");
         this.setState({
           dataWasLoaded: true,
-          errorMessage: "Данные о водителях не были загружены"
+          errorMessage: "Данные о гонках не были загружены"
         });
       });
   };
 
   prepareRacesForTable = rawRacesList => {
     let preparedRacesList = [];
-    console.log(rawRacesList, "rawRacesList");
     rawRacesList.forEach((race, raceIndex) => {
       const { season, raceName, date, Circuit } = race;
 
@@ -136,5 +134,6 @@ class Races extends Component {
     );
   }
 }
+Races.propTypes = {}
 
 export default Races;

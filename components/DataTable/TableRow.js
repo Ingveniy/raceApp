@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-
+import PropTypes from "prop-types";
 import { map } from "lodash";
 
 const TableRow = ({ rowFields }) => {
@@ -24,5 +24,9 @@ const styles = StyleSheet.create({
     borderBottomColor: "#eee"
   }
 });
+
+TableRow.propTypes = {
+  rowFields: PropTypes.object.isRequired,
+};
 
 export default TableRow;

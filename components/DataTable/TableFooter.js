@@ -1,8 +1,7 @@
 import React, { PureComponent } from "react";
-import { View } from "react-native";
-
+import PropTypes from "prop-types";
+import { View } from 'react-native';
 import NavigationButtons from "./NavigationButtons";
-import map from "lodash";
 
 const TableFooter = ({
   handleChangePage = () => {},
@@ -10,14 +9,23 @@ const TableFooter = ({
   countElementsOnPage,
   currentPage
 }) => {
-  return (
+  if (totalElements > countElementsOnPage) {
+    return (
       <NavigationButtons
         handleChangePage={handleChangePage}
         totalElements={totalElements}
         countElementsOnPage={countElementsOnPage}
         currentPage={currentPage}
       />
-  );
+    );
+  } 
+  return <View/>
 };
 
+TableFooter.propTypes = {
+  handleChangePage: PropTypes.func.isRequired,
+  totalElements: PropTypes.number,
+  countElementsOnPage: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired
+};
 export default TableFooter;

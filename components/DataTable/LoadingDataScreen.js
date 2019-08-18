@@ -1,10 +1,11 @@
-import React from 'react';
-import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import React from "react";
+import { View, Text, StyleSheet, ActivityIndicator } from "react-native";
+import PropTypes from "prop-types";
 
 const LoadingDataScreen = ({
-  message = 'Загрузка данных, пожалуйста ожидайте',
-  size = 'large',
-  color = '#0082c3',
+  message = "Загрузка данных, пожалуйста ожидайте",
+  size = "large",
+  color = "#0082c3"
 }) => {
   return (
     <View style={[styles.container, styles.horizontal]}>
@@ -25,21 +26,28 @@ const LoadingDataScreen = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignSelf: 'center',
+    justifyContent: "center",
+    alignSelf: "center"
   },
   horizontal: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignSelf: 'center',
-    padding: 10,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignSelf: "center",
+    padding: 10
   },
   activityIndicator: {
     flex: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 80,
+    justifyContent: "center",
+    alignItems: "center",
+    height: 80
   },
+
 });
+
+LoadingDataScreen.propTypes = {
+  message: PropTypes.string,
+  size: PropTypes.string,
+  color: PropTypes.string,
+};
 
 export default LoadingDataScreen;

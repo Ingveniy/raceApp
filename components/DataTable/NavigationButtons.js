@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import { map } from "lodash";
 import Button from "../Button";
+import PropTypes from "prop-types";
 
 class NavigationButtons extends PureComponent {
   renderNavigationButtons = (
@@ -44,10 +45,6 @@ class NavigationButtons extends PureComponent {
     countElementsOnPage,
     currentPage
   ) => {
-    console.log(totalElements, "totalElements");
-    console.log(countElementsOnPage, "countElementsOnPage");
-    console.log(currentPage, "currentPage");
-
     let lastPageNumber = Math.ceil(totalElements / countElementsOnPage);
     let prevPrevPage = currentPage - 2;
     let prevPage = currentPage - 1;
@@ -95,10 +92,18 @@ const styles = StyleSheet.create({
   navContainer: {
     marginLeft: 10,
     marginRight: 10,
+    marginBottom: 25,
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "flex-start"
   }
 });
+
+NavigationButtons.propTypes = {
+  handleChangePage: PropTypes.func.isRequired,
+  totalElements: PropTypes.number,
+  countElementsOnPage: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired
+};
 
 export default NavigationButtons;

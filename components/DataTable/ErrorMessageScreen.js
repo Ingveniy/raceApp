@@ -1,7 +1,8 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import { Text, View, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
 
-const ErrorMessageScreen = ({ errorMessage = "" }) => {
+const ErrorMessageScreen = ({ errorMessage = "Something was crash" }) => {
   return (
     <View style={styles.errorMessageContainer}>
       <Text>{errorMessage}</Text>
@@ -17,5 +18,9 @@ const styles = StyleSheet.create({
     alignItems: "center"
   }
 });
+
+ErrorMessageScreen.propTypes = {
+  errorMessage: PropTypes.string
+};
 
 export default ErrorMessageScreen;

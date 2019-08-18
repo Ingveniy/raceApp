@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Text, View, TouchableOpacity } from "react-native";
-
+import PropTypes from 'prop-types';
 import Table from "../../components/DataTable/Table";
 
 const TABLE_HEADERS = [
@@ -71,7 +71,7 @@ class Drivers extends Component {
               response.data.MRData.DriverTable.Drivers
             ),
             rawDriversList: response.data.MRData.DriverTable.Drivers,
-            driverTotalCount: response.data.MRData.total,
+            driverTotalCount: +response.data.MRData.total,
             dataWasLoaded: true,
             errorMessage: null,
             limit,
@@ -166,5 +166,7 @@ class Drivers extends Component {
     );
   }
 }
+
+Drivers.propTypes = {}
 
 export default Drivers;
